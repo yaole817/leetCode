@@ -15,7 +15,15 @@ int romanToInt(char* s) {
 	int sum = 0;
 	while ((*s) != '\0')
 	{
-		sum = sum + singleRomanToInt(*s);
+		if ((singleRomanToInt(*(s + 1)) != '\0') &&
+			(singleRomanToInt(*(s + 1)) > (singleRomanToInt(*s)))
+			)
+		{
+			sum = sum - singleRomanToInt(*s);
+		}
+		else{
+			sum = sum + singleRomanToInt(*s);
+		}
 		s++;
 	}
 	return sum;
